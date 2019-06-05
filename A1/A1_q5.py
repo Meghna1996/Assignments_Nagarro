@@ -6,7 +6,7 @@ choice = True
 try:
 	while choice:
 		new_dict={}
-		new_dict['roll_no'] = input("Enter roll no: ")
+		new_dict['roll_no'] = int(input("Enter roll no: "))
 		new_dict['name'] = input('Enter name: ')
 		new_dict['age'] = input('Enter branch: ')
 		new_list.append(new_dict)
