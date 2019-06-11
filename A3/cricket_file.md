@@ -8,8 +8,1524 @@ import numpy as np
 
 ```python
 df = pd.read_csv("deliveries.csv")
-
+df
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>match_id</th>
+      <th>inning</th>
+      <th>batting_team</th>
+      <th>bowling_team</th>
+      <th>over</th>
+      <th>ball</th>
+      <th>batsman</th>
+      <th>non_striker</th>
+      <th>bowler</th>
+      <th>is_super_over</th>
+      <th>...</th>
+      <th>bye_runs</th>
+      <th>legbye_runs</th>
+      <th>noball_runs</th>
+      <th>penalty_runs</th>
+      <th>batsman_runs</th>
+      <th>extra_runs</th>
+      <th>total_runs</th>
+      <th>player_dismissed</th>
+      <th>dismissal_kind</th>
+      <th>fielder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>1</td>
+      <td>1</td>
+      <td>DA Warner</td>
+      <td>S Dhawan</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>1</td>
+      <td>2</td>
+      <td>DA Warner</td>
+      <td>S Dhawan</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>1</td>
+      <td>3</td>
+      <td>DA Warner</td>
+      <td>S Dhawan</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>1</td>
+      <td>4</td>
+      <td>DA Warner</td>
+      <td>S Dhawan</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>1</td>
+      <td>5</td>
+      <td>DA Warner</td>
+      <td>S Dhawan</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>1</td>
+      <td>6</td>
+      <td>S Dhawan</td>
+      <td>DA Warner</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>1</td>
+      <td>7</td>
+      <td>S Dhawan</td>
+      <td>DA Warner</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>2</td>
+      <td>1</td>
+      <td>S Dhawan</td>
+      <td>DA Warner</td>
+      <td>A Choudhary</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>2</td>
+      <td>2</td>
+      <td>DA Warner</td>
+      <td>S Dhawan</td>
+      <td>A Choudhary</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>2</td>
+      <td>3</td>
+      <td>DA Warner</td>
+      <td>S Dhawan</td>
+      <td>A Choudhary</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>2</td>
+      <td>4</td>
+      <td>DA Warner</td>
+      <td>S Dhawan</td>
+      <td>A Choudhary</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>2</td>
+      <td>5</td>
+      <td>DA Warner</td>
+      <td>S Dhawan</td>
+      <td>A Choudhary</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>DA Warner</td>
+      <td>caught</td>
+      <td>Mandeep Singh</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>2</td>
+      <td>6</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>A Choudhary</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>2</td>
+      <td>7</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>A Choudhary</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>3</td>
+      <td>1</td>
+      <td>S Dhawan</td>
+      <td>MC Henriques</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>3</td>
+      <td>2</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>3</td>
+      <td>3</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>3</td>
+      <td>4</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>3</td>
+      <td>5</td>
+      <td>S Dhawan</td>
+      <td>MC Henriques</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>3</td>
+      <td>6</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>TS Mills</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>4</td>
+      <td>1</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>YS Chahal</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>4</td>
+      <td>2</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>YS Chahal</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>4</td>
+      <td>3</td>
+      <td>S Dhawan</td>
+      <td>MC Henriques</td>
+      <td>YS Chahal</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>4</td>
+      <td>4</td>
+      <td>S Dhawan</td>
+      <td>MC Henriques</td>
+      <td>YS Chahal</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>4</td>
+      <td>5</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>YS Chahal</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>4</td>
+      <td>6</td>
+      <td>S Dhawan</td>
+      <td>MC Henriques</td>
+      <td>YS Chahal</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>5</td>
+      <td>1</td>
+      <td>S Dhawan</td>
+      <td>MC Henriques</td>
+      <td>S Aravind</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>5</td>
+      <td>2</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>S Aravind</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>5</td>
+      <td>3</td>
+      <td>S Dhawan</td>
+      <td>MC Henriques</td>
+      <td>S Aravind</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sunrisers Hyderabad</td>
+      <td>Royal Challengers Bangalore</td>
+      <td>5</td>
+      <td>4</td>
+      <td>MC Henriques</td>
+      <td>S Dhawan</td>
+      <td>S Aravind</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>179048</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>16</td>
+      <td>1</td>
+      <td>DJ Bravo</td>
+      <td>SR Watson</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179049</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>16</td>
+      <td>2</td>
+      <td>DJ Bravo</td>
+      <td>SR Watson</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179050</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>16</td>
+      <td>3</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179051</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>16</td>
+      <td>4</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179052</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>16</td>
+      <td>5</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179053</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>16</td>
+      <td>6</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179054</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>17</td>
+      <td>1</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179055</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>17</td>
+      <td>2</td>
+      <td>DJ Bravo</td>
+      <td>SR Watson</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179056</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>17</td>
+      <td>3</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179057</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>17</td>
+      <td>4</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179058</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>17</td>
+      <td>5</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179059</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>17</td>
+      <td>6</td>
+      <td>DJ Bravo</td>
+      <td>SR Watson</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179060</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>18</td>
+      <td>1</td>
+      <td>DJ Bravo</td>
+      <td>SR Watson</td>
+      <td>KH Pandya</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179061</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>18</td>
+      <td>2</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>KH Pandya</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179062</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>18</td>
+      <td>3</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>KH Pandya</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179063</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>18</td>
+      <td>4</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>KH Pandya</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179064</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>18</td>
+      <td>5</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>KH Pandya</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179065</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>18</td>
+      <td>6</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>KH Pandya</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179066</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>19</td>
+      <td>1</td>
+      <td>SR Watson</td>
+      <td>DJ Bravo</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179067</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>19</td>
+      <td>2</td>
+      <td>DJ Bravo</td>
+      <td>SR Watson</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>DJ Bravo</td>
+      <td>caught</td>
+      <td>Q de Kock</td>
+    </tr>
+    <tr>
+      <th>179068</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>19</td>
+      <td>3</td>
+      <td>RA Jadeja</td>
+      <td>SR Watson</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179069</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>19</td>
+      <td>4</td>
+      <td>RA Jadeja</td>
+      <td>SR Watson</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179070</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>19</td>
+      <td>5</td>
+      <td>RA Jadeja</td>
+      <td>SR Watson</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179071</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>19</td>
+      <td>6</td>
+      <td>RA Jadeja</td>
+      <td>SR Watson</td>
+      <td>JJ Bumrah</td>
+      <td>0</td>
+      <td>...</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>4</td>
+      <td>8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179072</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>20</td>
+      <td>1</td>
+      <td>SR Watson</td>
+      <td>RA Jadeja</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179073</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>20</td>
+      <td>2</td>
+      <td>RA Jadeja</td>
+      <td>SR Watson</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179074</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>20</td>
+      <td>3</td>
+      <td>SR Watson</td>
+      <td>RA Jadeja</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179075</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>20</td>
+      <td>4</td>
+      <td>SR Watson</td>
+      <td>RA Jadeja</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>SR Watson</td>
+      <td>run out</td>
+      <td>KH Pandya</td>
+    </tr>
+    <tr>
+      <th>179076</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>20</td>
+      <td>5</td>
+      <td>SN Thakur</td>
+      <td>RA Jadeja</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179077</th>
+      <td>11415</td>
+      <td>2</td>
+      <td>Chennai Super Kings</td>
+      <td>Mumbai Indians</td>
+      <td>20</td>
+      <td>6</td>
+      <td>SN Thakur</td>
+      <td>RA Jadeja</td>
+      <td>SL Malinga</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>SN Thakur</td>
+      <td>lbw</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>179078 rows × 21 columns</p>
+</div>
+
+
 
 <h3>Which bowler has hit for maximum number of 1s</h3>
 
@@ -673,27 +2189,27 @@ new_df.merge(match_won,on='index')
     </tr>
     <tr>
       <th>11</th>
-      <td>Rising Pune Supergiant</td>
-      <td>16</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>12</th>
       <td>Delhi Capitals</td>
       <td>16</td>
       <td>10</td>
     </tr>
     <tr>
-      <th>13</th>
-      <td>Kochi Tuskers Kerala</td>
-      <td>14</td>
-      <td>6</td>
+      <th>12</th>
+      <td>Rising Pune Supergiant</td>
+      <td>16</td>
+      <td>10</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>13</th>
       <td>Rising Pune Supergiants</td>
       <td>14</td>
       <td>5</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Kochi Tuskers Kerala</td>
+      <td>14</td>
+      <td>6</td>
     </tr>
   </tbody>
 </table>
@@ -702,6 +2218,11 @@ new_df.merge(match_won,on='index')
 
 
 <h3>Which venue was the most used throughout the history of IPL</h3>
+
+
+```python
+df2 = pd.read_csv("matches.csv")
+```
 
 
 ```python
@@ -742,12 +2263,12 @@ df2['venue'].value_counts().reset_index().head(5)
     </tr>
     <tr>
       <th>1</th>
-      <td>Wankhede Stadium</td>
+      <td>M Chinnaswamy Stadium</td>
       <td>73</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>M Chinnaswamy Stadium</td>
+      <td>Wankhede Stadium</td>
       <td>73</td>
     </tr>
     <tr>
